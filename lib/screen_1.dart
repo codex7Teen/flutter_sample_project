@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_sample/constants.dart';
 
 class ScreenOne extends StatelessWidget {
-  const ScreenOne({super.key});
+  final Widget mobileLayout;
+  final Widget webLayout;
+  const ScreenOne(
+      {super.key, required this.mobileLayout, required this.webLayout});
 
   @override
   Widget build(BuildContext context) {
-    final _screenWidth = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      //! BODY
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-              child: Text(_screenWidth.round().toString(),
-                  style: GoogleFonts.bebasNeue(letterSpacing: 1, fontSize: 30)))
-        ],
-      ),
-    );
+        //! BODY
+        body: LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth < AppConstants.mobileSize) {
+        return mobileLayout;
+      } else {
+        return webLayout;
+      }
+    }));
   }
 }
