@@ -10,7 +10,7 @@ class ScreenOne extends StatelessWidget {
     return Scaffold(
       //! BODY
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
